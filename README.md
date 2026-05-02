@@ -72,6 +72,8 @@ Repoyu GitHub’a ittikten sonra:
 
 **Not:** Render free web uyku moduna geçebilir; iç zamanlayıcı her zaman çalışmayabilir. Üretimde günlük senkron için Render **Cron Job** ile `POST https://SIZIN-URL/api/sync` veya harici cron önerilir. SQLite dosyası konteyner diskindedir; kalıcı DB için managed PostgreSQL’e geçmek gerekir.
 
+**Ortam değişkenleri (Render):** `JWT_SECRET` (uzun rastgele), `CORS_ORIGINS=https://SIZIN-APP.onrender.com`, isteğe bağlı `DEMO_UPGRADE_SECRET` (demo plan yükseltme).
+
 ## Mimari özeti
 
 - **Backend:** FastAPI, **senkron** SQLAlchemy + SQLite (`backend/data/risk_intel.db`), APScheduler (Europe/Istanbul cron). Async/greenlet gerektirmez; kurumsal Windows ortamlarında daha sorunsuz çalışır.
