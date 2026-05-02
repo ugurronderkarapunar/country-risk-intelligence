@@ -1,9 +1,12 @@
-# Render.com: New Blueprint → bu repo → deploy
-# Not: Free planda disk uykuya girer; günlük RSS için Render Cron veya dış tetik önerilir.
+# Render Blueprint: Dashboard → New → Blueprint → GitHub repo seç → Apply
+# https://render.com/docs/blueprint-spec
 services:
   - type: web
     name: country-risk-intelligence
     runtime: docker
+    repo: https://github.com/ugurronderkarapunar/country-risk-intelligence
+    branch: main
     dockerfilePath: ./Dockerfile
+    dockerContext: .
     plan: free
     healthCheckPath: /api/health
