@@ -13,10 +13,12 @@ export function Dashboard() {
   const [zones, setZones] = useState<ConflictZoneItem[]>([]);
   const [sync, setSync] = useState<SyncStatus | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  const [info, setInfo] = useState<string | null>(null);
   const [syncing, setSyncing] = useState(false);
 
   const load = useCallback(async () => {
     setErr(null);
+    setInfo(null);
     try {
       const [c, z, m] = await Promise.all([api.countries(), api.conflictZones(), api.syncMeta()]);
       setCountries(c);
@@ -34,9 +36,15 @@ export function Dashboard() {
   const onSync = async () => {
     setSyncing(true);
     setErr(null);
+    setInfo(null);
     try {
-      await api.triggerSync();
+      const res = await api.triggerSync();
       await load();
+      setInfo(
+        res.message
+          ? `Senkron tamam: ${res.status} — ${res.message}`
+          : `Senkron tamam: ${res.status}`,
+      );
     } catch (e) {
       setErr(e instanceof Error ? e.message : "Senkron hatası");
     } finally {
@@ -51,6 +59,11 @@ export function Dashboard() {
       {err ? (
         <div className="mt-6 rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-100">
           {err}
+        </div>
+      ) : null}
+      {info ? (
+        <div className="mt-6 rounded-xl border border-emerald-500/35 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+          {info}
         </div>
       ) : null}
 

@@ -35,7 +35,8 @@ export type SyncStatus = {
   next_scheduled_tr: string;
 };
 
-async function j<T>(r: Response): Promise<T> {
+async function j<T>(p: Promise<Response>): Promise<T> {
+  const r = await p;
   if (!r.ok) {
     const t = await r.text();
     throw new Error(t || r.statusText);
