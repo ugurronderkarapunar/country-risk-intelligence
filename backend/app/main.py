@@ -7,7 +7,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from app.api.routes import router
+from app.api.auth_routes import router as auth_router
+from app.api.org_routes import router as org_router
+from app.api.public_routes import router as public_router
+from app.api.routes import router as core_router
+from app.api.v1_routes import router as v1_router
 from app.config import settings
 from app.database import Base, SessionLocal, engine
 from app.seed import ensure_seed
@@ -59,7 +63,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(router)
+app.include_router(public_router)
+app.include_router(auth_router)
+app.include_router(core_router)
+app.include_router(org_router)
+app.include_router(v1_router)
 
 _static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "static"))
 if os.path.isdir(_static_dir):

@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
     reliefweb_rss_url: str = "https://reliefweb.int/updates/rss.xml"
     scheduler_enabled: bool = True
+    jwt_secret: str = "dev-CHANGE-ME-use-long-random-string-in-production"
+    jwt_expire_minutes: int = 60 * 24 * 7
+    demo_upgrade_secret: str = ""
 
 
 settings = Settings()

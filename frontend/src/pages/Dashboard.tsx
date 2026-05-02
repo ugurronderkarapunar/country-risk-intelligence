@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import { ConflictFeed } from "../components/ConflictFeed";
 import { CountryTable } from "../components/CountryTable";
 import { DashboardHeader } from "../components/DashboardHeader";
@@ -9,6 +10,7 @@ import type { ConflictZoneItem, CountryBrief, SyncStatus } from "../lib/api";
 import { api } from "../lib/api";
 
 export function Dashboard() {
+  const { user } = useAuth();
   const [countries, setCountries] = useState<CountryBrief[]>([]);
   const [zones, setZones] = useState<ConflictZoneItem[]>([]);
   const [sync, setSync] = useState<SyncStatus | null>(null);
@@ -54,7 +56,7 @@ export function Dashboard() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
-      <DashboardHeader onSync={onSync} syncing={syncing} />
+      <DashboardHeader onSync={onSync} syncing={syncing} showSync={user?.is_admin ?? false} />
 
       {err ? (
         <div className="mt-6 rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-100">

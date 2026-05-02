@@ -1,15 +1,18 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import desc, nulls_last, select
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models import ConflictEvent, Country, SyncRun
+from app.deps import get_current_user
+from app.models import ConflictEvent, Country, SyncRun, User
 from app.schemas import ConflictZoneItem, CountryBrief, CountryDetail, SyncStatus
 from app.services.conflict_sync import event_counts_last_days, run_conflict_sync
 from app.services.recommendations import trade_logistics_recommendations
 from app.services.risk import conflict_boost_from_events, effective_conflict, risk_level, risk_score
 
-router = APIRouter(prefix="/api")
+router = APIRouter(prefix="/api", dependencies=[Depends(get_current_user)])
 
 
 def _country_brief_list(session: Session) -> list[CountryBrief]:
@@ -36,11 +39,6 @@ def _country_brief_list(session: Session) -> list[CountryBrief]:
         )
     out.sort(key=lambda x: x.risk_score, reverse=True)
     return out
-
-
-@router.get("/health")
-def health():
-    return {"status": "ok", "service": "country-risk-intelligence"}
 
 
 @router.get("/countries", response_model=list[CountryBrief])
@@ -130,7 +128,12 @@ def sync_meta(session: Session = Depends(get_db)):
 
 
 @router.post("/sync")
-def trigger_sync(session: Session = Depends(get_db)):
+def trigger_sync(
+    user: Annotated[User, Depends(get_current_user)],
+    session: Session = Depends(get_db),
+):
+    if not user.is_admin:
+        raise HTTPException(status_code=403, detail="Haber senkronu yalnızca organizasyon yöneticisi tarafından tetiklenebilir")
     run = run_conflict_sync(session)
     return {
         "status": run.status,

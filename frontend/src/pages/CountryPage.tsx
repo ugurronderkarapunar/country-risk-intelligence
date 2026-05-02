@@ -33,7 +33,7 @@ export function CountryPage() {
   if (err) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16">
-        <Link to="/" className="text-accent-cyan hover:underline">
+        <Link to="/dashboard" className="text-accent-cyan hover:underline">
           ← Panele dön
         </Link>
         <p className="mt-6 text-rose-200">{err}</p>
@@ -44,7 +44,7 @@ export function CountryPage() {
   if (!data) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-slate-400">
-        <Link to="/" className="inline-flex items-center gap-2 text-accent-cyan hover:underline">
+        <Link to="/dashboard" className="inline-flex items-center gap-2 text-accent-cyan hover:underline">
           <ArrowLeft className="h-4 w-4" />
           Panele dön
         </Link>
@@ -63,7 +63,7 @@ export function CountryPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 md:px-8">
-      <Link to="/" className="inline-flex items-center gap-2 text-sm text-accent-cyan hover:underline">
+      <Link to="/dashboard" className="inline-flex items-center gap-2 text-sm text-accent-cyan hover:underline">
         <ArrowLeft className="h-4 w-4" />
         Panele dön
       </Link>

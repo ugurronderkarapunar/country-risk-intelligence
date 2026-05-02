@@ -1,6 +1,8 @@
 # Country Risk Intelligence
 
-Lojistik ve dış ticaret odaklı ülke risk paneli: bileşik risk skoru, ReliefWeb RSS ile çatışma sinyalleri ve Türkçe operasyonel öneriler.
+Lojistik ve dış ticaret odaklı **SaaS**: ülke riski, koridor (rota) analizi, ReliefWeb RSS akışı, **JWT ile çok kiracılı org**, **Pro+ için REST API anahtarı**.
+
+İş modeli özeti: **`docs/IS_MODELI.md`** (panel ana gelir, API ikinci kanal).
 
 ## Yerel kurulum (Windows)
 
@@ -34,7 +36,15 @@ npm install
 npm run dev
 ```
 
-Arayüz: `http://127.0.0.1:5173` (Vite, `/api` isteklerini backend’e yönlendirir).
+Arayüz: `http://127.0.0.1:5173` (Vite, `/api` isteklerini backend’e yönlendirir). Önce **Ana sayfa → Kayıt** ile organizasyon oluşturun; panel ve API kotası org bazlıdır.
+
+### Kimlik ve API (özet)
+
+- `POST /auth/register` — `{ email, password, company_name }` → JWT  
+- `POST /auth/login` — JWT  
+- Panel uçları: `Authorization: Bearer <token>`  
+- Pro/Enterprise: `POST /api/api-keys` (admin) → `X-API-Key` ile `POST /api/v1/corridor`, `GET /api/v1/countries`  
+- Demo plan yükseltme: sunucuda `DEMO_UPGRADE_SECRET` tanımlayıp `POST /api/org/demo-upgrade` + header `X-Demo-Upgrade-Secret`
 
 ## GitHub
 

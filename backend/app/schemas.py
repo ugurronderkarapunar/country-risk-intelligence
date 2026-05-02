@@ -1,6 +1,7 @@
 from datetime import datetime
+from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, EmailStr, Field
 
 
 class CountryBrief(BaseModel):
@@ -36,3 +37,47 @@ class SyncStatus(BaseModel):
     last_message: str | None
     items_ingested: int | None
     next_scheduled_tr: str = "Her gün 12:00 Türkiye saati (Europe/Istanbul)"
+
+
+class RegisterIn(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=8, max_length=128)
+    company_name: str = Field(min_length=2, max_length=256)
+
+
+class LoginIn(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class TokenOut(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+
+
+class UserOut(BaseModel):
+    id: int
+    email: str
+    org_id: int
+    org_name: str
+    subscription_tier: str
+    is_admin: bool
+
+
+class CorridorIn(BaseModel):
+    legs: list[str] = Field(..., min_length=2, description="ISO2 ülke kodları sırasıyla, örn. [\"DE\",\"PL\",\"UA\"]")
+
+
+class DemoTierIn(BaseModel):
+    tier: Literal["starter", "pro", "enterprise"]
+
+
+class ApiKeyCreateIn(BaseModel):
+    label: str = Field(min_length=1, max_length=128)
+
+
+class ApiKeyCreateOut(BaseModel):
+    api_key: str
+    label: str
+    prefix: str
+    message: str = "Bu anahtarı yalnızca bir kez gösteriyoruz; güvenli saklayın."

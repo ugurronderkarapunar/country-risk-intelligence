@@ -3,9 +3,10 @@ import { Globe2, RefreshCw } from "lucide-react";
 type Props = {
   onSync: () => void;
   syncing: boolean;
+  showSync?: boolean;
 };
 
-export function DashboardHeader({ onSync, syncing }: Props) {
+export function DashboardHeader({ onSync, syncing, showSync = false }: Props) {
   return (
     <header className="flex flex-col gap-4 border-b border-surface-600/60 pb-6 md:flex-row md:items-center md:justify-between">
       <div className="flex items-start gap-3">
@@ -19,15 +20,17 @@ export function DashboardHeader({ onSync, syncing }: Props) {
           </p>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={onSync}
-        disabled={syncing}
-        className="inline-flex items-center justify-center gap-2 rounded-xl bg-surface-700 px-4 py-2.5 text-sm font-medium text-slate-100 ring-1 ring-surface-600 transition hover:bg-surface-600 disabled:opacity-50"
-      >
-        <RefreshCw className={`h-4 w-4 ${syncing ? "animate-spin" : ""}`} />
-        Çatışma akışını şimdi güncelle
-      </button>
+      {showSync ? (
+        <button
+          type="button"
+          onClick={onSync}
+          disabled={syncing}
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-surface-700 px-4 py-2.5 text-sm font-medium text-slate-100 ring-1 ring-surface-600 transition hover:bg-surface-600 disabled:opacity-50"
+        >
+          <RefreshCw className={`h-4 w-4 ${syncing ? "animate-spin" : ""}`} />
+          Çatışma akışını şimdi güncelle
+        </button>
+      ) : null}
     </header>
   );
 }
