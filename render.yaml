@@ -1,0 +1,9 @@
+# Render.com: New Blueprint → bu repo → deploy
+# Not: Free planda disk uykuya girer; günlük RSS için Render Cron veya dış tetik önerilir.
+services:
+  - type: web
+    name: country-risk-intelligence
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/health
