@@ -7,9 +7,11 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.deps import get_current_user
 from app.models import ConflictEvent, Country, SyncRun, User
-from app.schemas import ConflictZoneItem, CountryBrief, CountryDetail, SyncStatus
+from app.schemas import BreakingNewsOut, ConflictZoneItem, CountryBrief, CountryDetail, SyncStatus
 from app.services.conflict_sync import event_counts_last_days, run_conflict_sync
+from app.services.breaking_news import list_breaking_news
 from app.services.recommendations import trade_logistics_recommendations
+from app.services.recommendations_playbook import build_playbook, playbook_to_flat_summary
 from app.services.risk import conflict_boost_from_events, effective_conflict, risk_level, risk_score
 
 router = APIRouter(prefix="/api", dependencies=[Depends(get_current_user)])
@@ -64,6 +66,25 @@ def country_detail(iso2: str, session: Session = Depends(get_db)):
         .limit(8)
     )
     headlines = [row[0] for row in session.execute(headlines_q).all()]
+    hc = counts.get(c.iso2, 0)
+    playbook = build_playbook(
+        iso2=c.iso2,
+        name_en=c.name_en,
+        risk_level=lvl,
+        conflict_effective=ce,
+        political_stability=c.political_stability,
+        economic_risk=c.economic_risk,
+        logistics_friction=c.logistics_friction,
+        recent_headline_count=hc,
+    )
+    base_recs = trade_logistics_recommendations(
+        risk_level=lvl,
+        conflict_effective=ce,
+        political_stability=c.political_stability,
+        economic_risk=c.economic_risk,
+        logistics_friction=c.logistics_friction,
+    )
+    merged = list(dict.fromkeys([*base_recs, *playbook_to_flat_summary(playbook)]))
     return CountryDetail(
         iso2=c.iso2,
         name_en=c.name_en,
@@ -75,15 +96,25 @@ def country_detail(iso2: str, session: Session = Depends(get_db)):
         logistics_friction=c.logistics_friction,
         latitude=c.latitude,
         longitude=c.longitude,
-        recommendations=trade_logistics_recommendations(
-            risk_level=lvl,
-            conflict_effective=ce,
-            political_stability=c.political_stability,
-            economic_risk=c.economic_risk,
-            logistics_friction=c.logistics_friction,
-        ),
+        recommendations=merged,
+        recommendation_playbook=playbook,
         recent_conflict_headlines=headlines,
     )
+
+
+@router.get("/news/breaking", response_model=list[BreakingNewsOut])
+def breaking_news(session: Session = Depends(get_db), limit: int = 35):
+    rows = list_breaking_news(session, limit=limit)
+    return [
+        BreakingNewsOut(
+            source=r.source,
+            title=r.title,
+            link=r.link,
+            summary=r.summary,
+            published_at=r.published_at,
+        )
+        for r in rows
+    ]
 
 
 @router.get("/conflict-zones", response_model=list[ConflictZoneItem])

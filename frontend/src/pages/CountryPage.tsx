@@ -9,9 +9,42 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import type { CountryDetail } from "../lib/api";
+import type { CountryDetail, RecommendationPlaybook } from "../lib/api";
 import { api } from "../lib/api";
 import { riskBadgeClass } from "../lib/riskUi";
+
+const PLAYBOOK_TITLES: Record<string, string> = {
+  guvenlik: "Güvenlik & fiziksel risk",
+  lojistik_operasyon: "Lojistik operasyon",
+  gumruk_uyum: "Gümrük & uyum",
+  finans_sigorta: "Finans & sigorta",
+  kurumsal_sureklilik: "Kurumsal süreklilik",
+};
+
+function PlaybookSections({ pb }: { pb: RecommendationPlaybook }) {
+  const keys = Object.keys(PLAYBOOK_TITLES).filter((k) => pb[k]?.length);
+  if (keys.length === 0) return null;
+  return (
+    <div className="mt-6 space-y-4 rounded-2xl border border-surface-600/60 bg-surface-800/30 p-4">
+      <h2 className="text-sm font-semibold text-slate-200">Gelişmiş öneri playbook’u</h2>
+      <p className="text-xs text-slate-500">
+        Güvenlik ve lojistik ayrılmış kategoriler; müşteri sunumlarında doğrudan kullanılabilir (hukuki tavsiye değildir).
+      </p>
+      <div className="grid gap-4 md:grid-cols-2">
+        {keys.map((k) => (
+          <div key={k} className="rounded-xl border border-surface-600/40 bg-surface-900/40 p-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-accent-cyan">{PLAYBOOK_TITLES[k]}</h3>
+            <ul className="mt-2 list-disc space-y-2 pl-4 text-sm text-slate-300">
+              {(pb[k] ?? []).map((line) => (
+                <li key={line.slice(0, 80)}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function CountryPage() {
   const { iso2 } = useParams();
@@ -98,7 +131,7 @@ export function CountryPage() {
         </div>
 
         <div className="space-y-4 rounded-2xl border border-surface-600/60 bg-surface-800/30 p-4">
-          <h2 className="text-sm font-semibold text-slate-200">Lojistik &amp; ticaret önerileri</h2>
+          <h2 className="text-sm font-semibold text-slate-200">Özet öneri listesi</h2>
           <ul className="space-y-3">
             {data.recommendations.map((r) => (
               <li key={r.slice(0, 48)} className="rounded-xl border border-surface-600/50 bg-surface-900/40 p-3 text-sm text-slate-200">
@@ -108,6 +141,8 @@ export function CountryPage() {
           </ul>
         </div>
       </div>
+
+      {data.recommendation_playbook ? <PlaybookSections pb={data.recommendation_playbook} /> : null}
 
       <div className="mt-6 rounded-2xl border border-surface-600/60 bg-surface-800/30 p-4">
         <h2 className="text-sm font-semibold text-slate-200">Son çatışma / kriz başlıkları</h2>

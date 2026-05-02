@@ -6,8 +6,10 @@ from app.config import settings
 
 
 def create_access_token(*, subject: str, user_id: int, org_id: int) -> str:
+    """exp Unix zaman damgası (int) — tüm python-jose sürümleriyle uyumlu."""
     expire = datetime.now(UTC) + timedelta(minutes=settings.jwt_expire_minutes)
-    payload = {"sub": subject, "uid": user_id, "oid": org_id, "exp": expire}
+    exp_ts = int(expire.timestamp())
+    payload = {"sub": subject, "uid": user_id, "oid": org_id, "exp": exp_ts}
     return jwt.encode(payload, settings.jwt_secret, algorithm="HS256")
 
 

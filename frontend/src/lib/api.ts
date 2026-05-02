@@ -33,6 +33,7 @@ export type CountryBrief = {
 
 export type CountryDetail = CountryBrief & {
   recommendations: string[];
+  recommendation_playbook: RecommendationPlaybook;
   recent_conflict_headlines: string[];
 };
 
@@ -52,6 +53,16 @@ export type SyncStatus = {
   items_ingested: number | null;
   next_scheduled_tr: string;
 };
+
+export type BreakingNewsItem = {
+  source: string;
+  title: string;
+  link: string;
+  summary: string | null;
+  published_at: string | null;
+};
+
+export type RecommendationPlaybook = Record<string, string[]>;
 
 export type UserMe = {
   id: number;
@@ -113,6 +124,9 @@ export const api = {
     ),
 
   me: () => j<UserMe>(fetch(`${base}/auth/me`, { headers: authHeaders() })),
+
+  breakingNews: () =>
+    j<BreakingNewsItem[]>(fetch(`${base}/api/news/breaking?limit=30`, { headers: authHeaders() })),
 
   orgUsage: () =>
     j<{

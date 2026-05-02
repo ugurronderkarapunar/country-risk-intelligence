@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { BreakingNewsFeed } from "../components/BreakingNewsFeed";
 import { ConflictFeed } from "../components/ConflictFeed";
 import { CountryTable } from "../components/CountryTable";
 import { DashboardHeader } from "../components/DashboardHeader";
@@ -72,12 +73,13 @@ export function Dashboard() {
       <div className="mt-8 space-y-8">
         <StatCards countries={countries} sync={sync} />
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-4">
           <div className="space-y-6 lg:col-span-2">
             <RiskScatter data={countries} />
             <TopRisksBar data={countries} />
           </div>
           <ConflictFeed items={zones} />
+          <BreakingNewsFeed />
         </div>
 
         <CountryTable rows={countries} />

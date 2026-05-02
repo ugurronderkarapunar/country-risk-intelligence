@@ -19,7 +19,16 @@ class CountryBrief(BaseModel):
 
 class CountryDetail(CountryBrief):
     recommendations: list[str]
+    recommendation_playbook: dict[str, list[str]]
     recent_conflict_headlines: list[str] = Field(default_factory=list)
+
+
+class BreakingNewsOut(BaseModel):
+    source: str
+    title: str
+    link: str
+    summary: str | None
+    published_at: datetime | None
 
 
 class ConflictZoneItem(BaseModel):

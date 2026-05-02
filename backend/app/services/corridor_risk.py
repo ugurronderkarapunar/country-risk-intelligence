@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from app.models import Country
 from app.services.conflict_sync import event_counts_last_days
 from app.services.recommendations import trade_logistics_recommendations
+from app.services.recommendations_playbook import build_playbook, playbook_to_flat_summary
 from app.services.risk import conflict_boost_from_events, effective_conflict, risk_level, risk_score
 
 
@@ -38,6 +39,7 @@ def analyze_corridor(session: Session, legs_iso2: list[str]) -> dict:
             "bottleneck": None,
             "corridor_risk_score": None,
             "recommendations": [],
+            "recommendation_playbook": {},
         }
 
     counts = event_counts_last_days(session, 14)
@@ -52,6 +54,7 @@ def analyze_corridor(session: Session, legs_iso2: list[str]) -> dict:
                 "bottleneck": None,
                 "corridor_risk_score": None,
                 "recommendations": [],
+                "recommendation_playbook": {},
             }
         boost = conflict_boost_from_events(counts.get(c.iso2, 0))
         ce = effective_conflict(c.conflict_base, boost)
@@ -77,18 +80,32 @@ def analyze_corridor(session: Session, legs_iso2: list[str]) -> dict:
     assert worst is not None
     boost_b = conflict_boost_from_events(counts.get(worst.iso2, 0))
     ce_b = effective_conflict(worst.conflict_base, boost_b)
-    recs = trade_logistics_recommendations(
-        risk_level=risk_level(corridor_score if corridor_score <= 10 else 10),
+    cl = risk_level(corridor_score if corridor_score <= 10 else 10)
+    max_log = max(x.logistics_friction for x in leg_rows)
+    hc = counts.get(worst.iso2, 0)
+    playbook = build_playbook(
+        iso2=worst.iso2,
+        name_en=worst.name_en,
+        risk_level=cl,
         conflict_effective=ce_b,
         political_stability=worst.political_stability,
         economic_risk=worst.economic_risk,
-        logistics_friction=max(x.logistics_friction for x in leg_rows),
+        logistics_friction=max_log,
+        recent_headline_count=hc,
+    )
+    recs = trade_logistics_recommendations(
+        risk_level=cl,
+        conflict_effective=ce_b,
+        political_stability=worst.political_stability,
+        economic_risk=worst.economic_risk,
+        logistics_friction=max_log,
     )
     recs.insert(
         0,
         f"Koridor ({len(leg_rows)} bacak): darboğaz ülke {bottleneck.name_en} ({bottleneck.iso2}), "
         f"ortalama lojistik sürtünme {avg_log:.1f}/10.",
     )
+    merged = list(dict.fromkeys([*recs, *playbook_to_flat_summary(playbook)]))
 
     return {
         "valid": True,
@@ -111,5 +128,6 @@ def analyze_corridor(session: Session, legs_iso2: list[str]) -> dict:
         },
         "corridor_risk_score": corridor_score,
         "corridor_risk_level": risk_level(corridor_score),
-        "recommendations": recs,
+        "recommendations": merged,
+        "recommendation_playbook": playbook,
     }

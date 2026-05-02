@@ -1,5 +1,14 @@
 import { useState } from "react";
+import type { RecommendationPlaybook } from "../lib/api";
 import { api } from "../lib/api";
+
+const PLAYBOOK_TITLES: Record<string, string> = {
+  guvenlik: "Güvenlik",
+  lojistik_operasyon: "Lojistik",
+  gumruk_uyum: "Gümrük & uyum",
+  finans_sigorta: "Finans & sigorta",
+  kurumsal_sureklilik: "Kurumsal süreklilik",
+};
 
 export function CorridorPage() {
   const [raw, setRaw] = useState("DE, PL, UA");
@@ -93,6 +102,29 @@ export function CorridorPage() {
               <li key={r.slice(0, 60)}>{r}</li>
             ))}
           </ul>
+          {result.recommendation_playbook &&
+          typeof result.recommendation_playbook === "object" &&
+          Object.keys(result.recommendation_playbook as object).length > 0 ? (
+            <div className="mt-6 border-t border-surface-600/50 pt-4">
+              <h3 className="text-sm font-semibold text-slate-200">Playbook (darboğaz ülke bazlı)</h3>
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                {Object.entries(result.recommendation_playbook as RecommendationPlaybook).map(([k, lines]) =>
+                  lines?.length ? (
+                    <div key={k} className="rounded-lg border border-surface-600/40 bg-surface-900/30 p-3">
+                      <p className="text-[11px] font-semibold uppercase text-cyan-300/90">
+                        {PLAYBOOK_TITLES[k] ?? k}
+                      </p>
+                      <ul className="mt-2 list-disc space-y-1 pl-4 text-xs text-slate-300">
+                        {lines.map((line) => (
+                          <li key={line.slice(0, 72)}>{line}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null,
+                )}
+              </div>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </div>

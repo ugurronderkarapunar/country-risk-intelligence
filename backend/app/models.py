@@ -83,3 +83,17 @@ class SyncRun(Base):
     status: Mapped[str] = mapped_column(String(32), nullable=False)
     message: Mapped[str | None] = mapped_column(Text, nullable=True)
     items_ingested: Mapped[int] = mapped_column(Integer, default=0)
+
+
+class BreakingNewsItem(Base):
+    """Son dakika / genel haber akışı (BBC, Google News TR vb.)."""
+
+    __tablename__ = "breaking_news_items"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    source: Mapped[str] = mapped_column(String(64), nullable=False)
+    title: Mapped[str] = mapped_column(String(512), nullable=False)
+    link: Mapped[str] = mapped_column(String(2048), nullable=False, unique=True)
+    summary: Mapped[str | None] = mapped_column(Text, nullable=True)
+    published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
