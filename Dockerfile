@@ -2,12 +2,16 @@
 FROM node:20-alpine AS frontend
 WORKDIR /src
 COPY frontend/package.json ./
-RUN npm install
+RUN npm install --no-audit --no-fund
 COPY frontend/ ./
 RUN npm run build
 
 FROM python:3.12-slim
 WORKDIR /app
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tzdata ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

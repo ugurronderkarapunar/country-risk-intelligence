@@ -32,9 +32,12 @@ async def lifespan(app: FastAPI):
     with SessionLocal() as session:
         ensure_seed(session)
     if settings.scheduler_enabled:
-        scheduler.add_job(_daily_conflict_job, "cron", hour=12, minute=0)
-        scheduler.start()
-        log.info("APScheduler: günlük görev Europe/Istanbul 12:00 olarak ayarlandı.")
+        try:
+            scheduler.add_job(_daily_conflict_job, "cron", hour=12, minute=0)
+            scheduler.start()
+            log.info("APScheduler: günlük görev Europe/Istanbul 12:00 olarak ayarlandı.")
+        except Exception:  # noqa: BLE001
+            log.exception("APScheduler başlatılamadı; API yine de çalışır (manuel /api/sync kullanın).")
     yield
     if settings.scheduler_enabled:
         scheduler.shutdown(wait=False)
