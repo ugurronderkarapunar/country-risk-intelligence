@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 import { BreakingNewsFeed } from "../components/BreakingNewsFeed";
 import { ConflictFeed } from "../components/ConflictFeed";
@@ -11,6 +12,7 @@ import type { ConflictZoneItem, CountryBrief, SyncStatus } from "../lib/api";
 import { api } from "../lib/api";
 
 export function Dashboard() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [countries, setCountries] = useState<CountryBrief[]>([]);
   const [zones, setZones] = useState<ConflictZoneItem[]>([]);
@@ -28,9 +30,9 @@ export function Dashboard() {
       setZones(z);
       setSync(m);
     } catch (e) {
-      setErr(e instanceof Error ? e.message : "Yükleme hatası");
+      setErr(e instanceof Error ? e.message : t("dashboard.loadError"));
     }
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     void load();
@@ -45,11 +47,11 @@ export function Dashboard() {
       await load();
       setInfo(
         res.message
-          ? `Senkron tamam: ${res.status} — ${res.message}`
-          : `Senkron tamam: ${res.status}`,
+          ? t("dashboard.syncOkWithMsg", { status: res.status, message: res.message })
+          : t("dashboard.syncOk", { status: res.status }),
       );
     } catch (e) {
-      setErr(e instanceof Error ? e.message : "Senkron hatası");
+      setErr(e instanceof Error ? e.message : t("dashboard.syncError"));
     } finally {
       setSyncing(false);
     }
@@ -86,8 +88,7 @@ export function Dashboard() {
       </div>
 
       <footer className="mt-12 border-t border-surface-600/50 pt-6 text-center text-xs text-slate-500">
-        Veriler bilgilendirme amaçlıdır; ticari kararlar için uzman görüşü gereklidir. ReliefWeb RSS ile otomatik akış;
-        her gün 12:00 Türkiye saatinde senkron önerilir (sunucu zamanı Europe/Istanbul).
+        {t("dashboard.footer")}
       </footer>
     </div>
   );

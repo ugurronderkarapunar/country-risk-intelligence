@@ -1,4 +1,5 @@
 import { Globe2, RefreshCw } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   onSync: () => void;
@@ -7,6 +8,8 @@ type Props = {
 };
 
 export function DashboardHeader({ onSync, syncing, showSync = false }: Props) {
+  const { t } = useTranslation();
+
   return (
     <header className="flex flex-col gap-4 border-b border-surface-600/60 pb-6 md:flex-row md:items-center md:justify-between">
       <div className="flex items-start gap-3">
@@ -14,10 +17,8 @@ export function DashboardHeader({ onSync, syncing, showSync = false }: Props) {
           <Globe2 className="h-6 w-6 text-accent-cyan" aria-hidden />
         </div>
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">Country Risk Intelligence</h1>
-          <p className="mt-1 max-w-2xl text-sm text-slate-400">
-            Lojistik ve dış ticaret ekipleri için ülke riski, çatışma sinyalleri ve operasyonel öneriler — tek panelde.
-          </p>
+          <h1 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">{t("header.title")}</h1>
+          <p className="mt-1 max-w-2xl text-sm text-slate-400">{t("header.subtitle")}</p>
         </div>
       </div>
       {showSync ? (
@@ -28,7 +29,7 @@ export function DashboardHeader({ onSync, syncing, showSync = false }: Props) {
           className="inline-flex items-center justify-center gap-2 rounded-xl bg-surface-700 px-4 py-2.5 text-sm font-medium text-slate-100 ring-1 ring-surface-600 transition hover:bg-surface-600 disabled:opacity-50"
         >
           <RefreshCw className={`h-4 w-4 ${syncing ? "animate-spin" : ""}`} />
-          Çatışma akışını şimdi güncelle
+          {t("header.syncConflict")}
         </button>
       ) : null}
     </header>

@@ -7,15 +7,17 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useTranslation } from "react-i18next";
 import type { CountryBrief } from "../lib/api";
 
 export function TopRisksBar({ data }: { data: CountryBrief[] }) {
+  const { t } = useTranslation();
   const top = [...data].sort((a, b) => b.risk_score - a.risk_score).slice(0, 8);
   const rows = top.map((c) => ({ name: c.iso2, skor: c.risk_score }));
 
   return (
     <div className="rounded-2xl border border-surface-600/60 bg-surface-800/30 p-4">
-      <h2 className="mb-2 text-sm font-semibold text-slate-200">En yüksek risk (özet)</h2>
+      <h2 className="mb-2 text-sm font-semibold text-slate-200">{t("topRisks.title")}</h2>
       <ResponsiveContainer width="100%" height={260}>
         <BarChart data={rows} layout="vertical" margin={{ left: 8, right: 16 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#243047" horizontal={false} />

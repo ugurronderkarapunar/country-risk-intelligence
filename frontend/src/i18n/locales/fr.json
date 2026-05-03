@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "brand": "Risk Intelligence",
+    "panel": "Tableau de bord",
+    "corridor": "Corridor",
+    "settingsQuota": "Quota / API",
+    "logout": "Déconnexion"
+  },
+  "lang": {
+    "label": "Langue",
+    "tr": "Turc",
+    "en": "Anglais",
+    "ar": "Arabe",
+    "zh": "Chinois",
+    "de": "Allemand",
+    "fr": "Français",
+    "es": "Espagnol",
+    "ja": "Japonais"
+  },
+  "header": {
+    "title": "Intelligence risque pays",
+    "subtitle": "Risque pays, signaux de conflit et recommandations opérationnelles pour la logistique et le commerce — un seul panneau.",
+    "syncConflict": "Actualiser le flux conflits"
+  },
+  "stats": {
+    "avgRisk": "Score de risque moyen",
+    "avgRiskSub": "Indicateur composite 0–10",
+    "highCountries": "Pays élevés / extrêmes",
+    "highCountriesSub": "parmi {{count}} pays",
+    "lastSync": "Dernière synchro conflits",
+    "lastSyncSubEmpty": "—"
+  },
+  "table": {
+    "title": "Liste des pays",
+    "subtitle": "Composant conflits enrichi RSS",
+    "country": "Pays",
+    "score": "Score",
+    "level": "Niveau",
+    "conflict": "Conflit",
+    "political": "Politique",
+    "economy": "Économie",
+    "logistics": "Logistique",
+    "detail": "Détails"
+  },
+  "scatter": {
+    "title": "Carte des risques (coordonnées)",
+    "bubbleHint": "Taille bulle ∝ risque",
+    "tooltipScore": "Score"
+  },
+  "topRisks": {
+    "title": "Risques les plus élevés (résumé)"
+  },
+  "breaking": {
+    "title": "Breaking & agenda mondial",
+    "subtitle": "BBC World + Google News TR — ~15 min",
+    "loadError": "Impossible de charger les actualités",
+    "loading": "Chargement des actualités…",
+    "openArticle": "Ouvrir l’article →"
+  },
+  "conflict": {
+    "title": "Flux conflits & crises",
+    "subtitle": "ReliefWeb RSS — appariement pays",
+    "empty": "Aucun enregistrement. Lancez la synchronisation.",
+    "openSource": "Ouvrir la source"
+  },
+  "protected": {
+    "verifying": "Vérification de la session…"
+  },
+  "landing": {
+    "heroTitle": "Risque pays & analyse de corridor pour la logistique",
+    "heroSubtitle": "Scorez les pays le long de votre corridor dans un panneau ; alignez opérations et finance sur les signaux de conflit. SaaS = revenu principal ; API REST (Pro+) pour TMS/WMS.",
+    "ctaTrial": "Essai gratuit",
+    "ctaLogin": "Connexion",
+    "loadError": "Échec du chargement",
+    "monthlyCorridor": "Analyses corridor / mois :",
+    "apiYes": "Oui (Pro+)",
+    "apiNo": "Non (dashboard seulement)",
+    "footer": "Modèle de revenus : Starter → Pro → Enterprise. Voir docs/IS_MODELI.md."
+  },
+  "login": {
+    "title": "Connexion",
+    "noAccount": "Pas de compte ?",
+    "registerLink": "Inscription",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "error": "Échec de la connexion",
+    "submit": "Se connecter",
+    "submitBusy": "…",
+    "home": "← Accueil"
+  },
+  "register": {
+    "title": "Inscription entreprise",
+    "haveAccount": "Déjà un compte ?",
+    "loginLink": "Connexion",
+    "company": "Nom entreprise / flotte",
+    "email": "E-mail",
+    "password": "Mot de passe (min 8)",
+    "error": "Échec de l’inscription",
+    "submit": "Créer un compte",
+    "submitBusy": "…",
+    "home": "← Accueil"
+  },
+  "dashboard": {
+    "loadError": "Échec du chargement",
+    "syncError": "Erreur de synchro",
+    "syncOkWithMsg": "Synchro terminée : {{status}} — {{message}}",
+    "syncOk": "Synchro terminée : {{status}}",
+    "footer": "Données informatives ; conseil expert requis pour décisions commerciales. Flux RSS ReliefWeb ; synchro quotidienne ~12:00 TR recommandée."
+  },
+  "corridor": {
+    "title": "Analyse de corridor (itinéraire)",
+    "subtitle": "Saisissez les pays de transit dans l’ordre (ISO2). Goulot et recommandations combinées. Chaque exécution consomme le quota mensuel.",
+    "chainLabel": "Chaîne de pays",
+    "placeholder": "ex. TR, BG, RO, HU, DE",
+    "analyze": "Analyser",
+    "analyzing": "Calcul…",
+    "scoreLabel": "Score corridor :",
+    "bottleneck": "Goulot :",
+    "tableCountry": "Pays",
+    "tableScore": "Score",
+    "tableLevel": "Niveau",
+    "tableLogistics": "Logistique",
+    "playbookTitle": "Playbook (pays goulot)"
+  },
+  "country": {
+    "back": "Retour au tableau de bord",
+    "loadError": "Erreur",
+    "loading": "Chargement…",
+    "radarConflict": "Conflit",
+    "radarPolitical": "Risque politique",
+    "radarEconomy": "Économie",
+    "radarLogistics": "Logistique",
+    "componentsTitle": "Composantes du risque",
+    "recommendationsTitle": "Recommandations (résumé)",
+    "playbookTitle": "Playbook avancé",
+    "playbookDisclaimer": "Sécurité et logistique séparées pour présentations (pas un conseil juridique).",
+    "headlinesTitle": "Derniers titres conflit/crise",
+    "headlinesEmpty": "Aucun titre correspondant."
+  },
+  "settings": {
+    "title": "API & quota",
+    "subtitle": "Pro et Enterprise incluent l’API REST pour TMS. Endpoints :",
+    "plan": "Offre :",
+    "corridorUsage": "Analyses corridor ce mois-ci :",
+    "apiKeys": "Clés API",
+    "starterNoApi": "Pas d’API en Starter. Vendez Pro ou utilisez DEMO_UPGRADE_SECRET.",
+    "labelPlaceholder": "TMS prod",
+    "newKey": "Nouvelle clé",
+    "keyOnce": "Affichée une fois :",
+    "revoke": "Révoquer"
+  },
+  "playbook": {
+    "guvenlik": "Sécurité",
+    "lojistik_operasyon": "Logistique",
+    "gumruk_uyum": "Douanes & conformité",
+    "finans_sigorta": "Finance & assurance",
+    "kurumsal_sureklilik": "Continuité d’activité"
+  },
+  "countryPagePlaybook": {
+    "guvenlik": "Sécurité & risque physique",
+    "lojistik_operasyon": "Opérations logistiques",
+    "gumruk_uyum": "Douanes & conformité",
+    "finans_sigorta": "Finance & assurance",
+    "kurumsal_sureklilik": "Continuité d’activité"
+  },
+  "errors": {
+    "generic": "Une erreur s’est produite"
+  }
+}

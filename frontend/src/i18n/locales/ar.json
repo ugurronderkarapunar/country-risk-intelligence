@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "brand": "ذكاء المخاطر",
+    "panel": "لوحة التحكم",
+    "corridor": "الممر",
+    "settingsQuota": "الحصة / واجهة API",
+    "logout": "تسجيل الخروج"
+  },
+  "lang": {
+    "label": "اللغة",
+    "tr": "التركية",
+    "en": "الإنجليزية",
+    "ar": "العربية",
+    "zh": "الصينية",
+    "de": "الألمانية",
+    "fr": "الفرنسية",
+    "es": "الإسبانية",
+    "ja": "اليابانية"
+  },
+  "header": {
+    "title": "ذكاء مخاطر الدول",
+    "subtitle": "مخاطر الدول وإشارات النزاعات والإرشادات التشغيلية لفرق اللوجستيات والتجارة — في لوحة واحدة.",
+    "syncConflict": "تحديث موجز النزاعات الآن"
+  },
+  "stats": {
+    "avgRisk": "متوسط درجة المخاطر",
+    "avgRiskSub": "مؤشر مركب من 0 إلى 10",
+    "highCountries": "دول مرتفعة / متطرفة",
+    "highCountriesSub": "ضمن {{count}} دولة",
+    "lastSync": "آخر مزامنة للنزاعات",
+    "lastSyncSubEmpty": "—"
+  },
+  "table": {
+    "title": "قائمة الدول",
+    "subtitle": "يتضمن مكوّن نزاعات معزّز بـ RSS",
+    "country": "الدولة",
+    "score": "الدرجة",
+    "level": "المستوى",
+    "conflict": "النزاع",
+    "political": "سياسي",
+    "economy": "اقتصادي",
+    "logistics": "لوجستي",
+    "detail": "التفاصيل"
+  },
+  "scatter": {
+    "title": "خريطة المخاطر (إحداثيات)",
+    "bubbleHint": "حجم الفقاعة ∝ المخاطر",
+    "tooltipScore": "الدرجة"
+  },
+  "topRisks": {
+    "title": "أعلى المخاطر (ملخص)"
+  },
+  "breaking": {
+    "title": "عاجل وأخبار عالمية",
+    "subtitle": "BBC World + Google News TR — يُحدَّث كل ~15 دقيقة",
+    "loadError": "تعذر تحميل الأخبار",
+    "loading": "جارٍ تحميل الأخبار…",
+    "openArticle": "فتح المقال ←"
+  },
+  "conflict": {
+    "title": "موجز النزاعات والأزمات",
+    "subtitle": "ReliefWeb RSS — مطابقة الدول",
+    "empty": "لا توجد سجلات بعد. شغّل المزامنة.",
+    "openSource": "فتح المصدر"
+  },
+  "protected": {
+    "verifying": "جارٍ التحقق من الجلسة…"
+  },
+  "landing": {
+    "heroTitle": "مخاطر الدول وتحليل الممرات للوجستيات",
+    "heroSubtitle": "قيّم الدول على طول مسارك في لوحة واحدة؛ وفّق العمليات والمالية مع إشارات النزاع والإرشاد التشغيلي. لوحة SaaS هي القناة الرئيسية؛ واجهة REST (Pro+) للتكامل مع TMS/WMS.",
+    "ctaTrial": "ابدأ مجانًا",
+    "ctaLogin": "تسجيل الدخول",
+    "loadError": "فشل التحميل",
+    "monthlyCorridor": "تحليلات الممر شهريًا:",
+    "apiYes": "نعم (Pro+)",
+    "apiNo": "لا (لوحة فقط)",
+    "footer": "نموذج الإيرادات: Starter → Pro → Enterprise. راجع docs/IS_MODELI.md."
+  },
+  "login": {
+    "title": "تسجيل الدخول",
+    "noAccount": "لا حساب؟",
+    "registerLink": "تسجيل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "error": "فشل تسجيل الدخول",
+    "submit": "دخول",
+    "submitBusy": "…",
+    "home": "← الرئيسية"
+  },
+  "register": {
+    "title": "تسجيل الشركة",
+    "haveAccount": "لديك حساب؟",
+    "loginLink": "تسجيل الدخول",
+    "company": "اسم الشركة / الأسطول",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور (8 على الأقل)",
+    "error": "فشل التسجيل",
+    "submit": "إنشاء حساب",
+    "submitBusy": "…",
+    "home": "← الرئيسية"
+  },
+  "dashboard": {
+    "loadError": "فشل التحميل",
+    "syncError": "خطأ في المزامنة",
+    "syncOkWithMsg": "اكتملت المزامنة: {{status}} — {{message}}",
+    "syncOk": "اكتملت المزامنة: {{status}}",
+    "footer": "البيانات للمعلومات فقط؛ استشر الخبراء للقرارات التجارية. تدفق RSS تلقائي؛ يُنصح بمزامنة يومية حوالي 12:00 بتوقيت تركيا."
+  },
+  "corridor": {
+    "title": "تحليل الممر (المسار)",
+    "subtitle": "أدخل دول العبور بالترتيب (ISO2، فاصلة أو مسافة). يحدد عنق الزجاجة والتوصيات. كل تشغيل يستهلك الحصة الشهرية.",
+    "chainLabel": "سلسلة الدول",
+    "placeholder": "مثال TR, BG, RO, HU, DE",
+    "analyze": "تحليل",
+    "analyzing": "جارٍ الحساب…",
+    "scoreLabel": "درجة الممر:",
+    "bottleneck": "عنق الزجاجة:",
+    "tableCountry": "الدولة",
+    "tableScore": "الدرجة",
+    "tableLevel": "المستوى",
+    "tableLogistics": "لوجستي",
+    "playbookTitle": "دليل الإجراءات (حسب عنق الزجاجة)"
+  },
+  "country": {
+    "back": "العودة للوحة",
+    "loadError": "خطأ",
+    "loading": "جارٍ التحميل…",
+    "radarConflict": "نزاع",
+    "radarPolitical": "مخاطر سياسية",
+    "radarEconomy": "اقتصاد",
+    "radarLogistics": "لوجستي",
+    "componentsTitle": "مكوّنات المخاطر",
+    "recommendationsTitle": "ملخص التوصيات",
+    "playbookTitle": "دليل توصيات متقدم",
+    "playbookDisclaimer": "فئات منفصلة للأمن واللوجستيات للعروض (ليس نصيحة قانونية).",
+    "headlinesTitle": "أحدث عناوين النزاع/الأزمة",
+    "headlinesEmpty": "لا عناوين مطابقة لهذه الدولة."
+  },
+  "settings": {
+    "title": "واجهة API والحصة",
+    "subtitle": "تتضمن خطط Pro وEnterprise واجهة REST للتكامل مع TMS. النقاط:",
+    "plan": "الخطة:",
+    "corridorUsage": "تحليلات الممر هذا الشهر:",
+    "apiKeys": "مفاتيح API",
+    "starterNoApi": "لا توجد API في Starter. بِع Pro أو استخدم DEMO_UPGRADE_SECRET للاختبار.",
+    "labelPlaceholder": "TMS prod",
+    "newKey": "مفتاح جديد",
+    "keyOnce": "يُعرض مرة واحدة:",
+    "revoke": "إلغاء"
+  },
+  "playbook": {
+    "guvenlik": "الأمن",
+    "lojistik_operasyon": "اللوجستيات",
+    "gumruk_uyum": "الجمارك والامتثال",
+    "finans_sigorta": "التمويل والتأمين",
+    "kurumsal_sureklilik": "استمرارية الأعمال"
+  },
+  "countryPagePlaybook": {
+    "guvenlik": "الأمن والمخاطر المادية",
+    "lojistik_operasyon": "عمليات لوجستية",
+    "gumruk_uyum": "الجمارك والامتثال",
+    "finans_sigorta": "التمويل والتأمين",
+    "kurumsal_sureklilik": "استمرارية الأعمال"
+  },
+  "errors": {
+    "generic": "حدث خطأ"
+  }
+}

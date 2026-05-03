@@ -9,25 +9,28 @@ import {
   YAxis,
   ZAxis,
 } from "recharts";
+import { useTranslation } from "react-i18next";
 import type { CountryBrief } from "../lib/api";
 import { riskFill } from "../lib/riskUi";
 
 type Pt = CountryBrief & { z: number };
 
 function Tip({ active, payload }: { active?: boolean; payload?: Array<{ payload: Pt }> }) {
+  const { t } = useTranslation();
   if (!active || !payload?.length) return null;
   const p = payload[0].payload;
   return (
     <div className="rounded-lg border border-surface-600 bg-surface-800/95 px-3 py-2 text-sm shadow-xl backdrop-blur">
       <div className="font-semibold text-white">{p.name_en}</div>
       <div className="text-slate-400">
-        {p.iso2} · Skor {p.risk_score} · {p.risk_level}
+        {p.iso2} · {t("scatter.tooltipScore")} {p.risk_score} · {p.risk_level}
       </div>
     </div>
   );
 }
 
 export function RiskScatter({ data }: { data: CountryBrief[] }) {
+  const { t } = useTranslation();
   const pts: Pt[] = data.map((d) => ({
     ...d,
     z: 40 + d.risk_score * 90,
@@ -36,8 +39,8 @@ export function RiskScatter({ data }: { data: CountryBrief[] }) {
   return (
     <div className="rounded-2xl border border-surface-600/60 bg-surface-800/30 p-4">
       <div className="mb-2 flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-slate-200">Risk haritası (koordinat)</h2>
-        <span className="text-xs text-slate-500">Kabarcık boyutu ∝ risk</span>
+        <h2 className="text-sm font-semibold text-slate-200">{t("scatter.title")}</h2>
+        <span className="text-xs text-slate-500">{t("scatter.bubbleHint")}</span>
       </div>
       <ResponsiveContainer width="100%" height={340}>
         <ScatterChart margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>

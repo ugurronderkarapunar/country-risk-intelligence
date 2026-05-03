@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "brand": "Risk Intelligence",
+    "panel": "Panel",
+    "corridor": "Koridor",
+    "settingsQuota": "Kota / API",
+    "logout": "Çıkış"
+  },
+  "lang": {
+    "label": "Dil",
+    "tr": "Türkçe",
+    "en": "İngilizce",
+    "ar": "Arapça",
+    "zh": "Çince",
+    "de": "Almanca",
+    "fr": "Fransızca",
+    "es": "İspanyolca",
+    "ja": "Japonca"
+  },
+  "header": {
+    "title": "Country Risk Intelligence",
+    "subtitle": "Lojistik ve dış ticaret ekipleri için ülke riski, çatışma sinyalleri ve operasyonel öneriler — tek panelde.",
+    "syncConflict": "Çatışma akışını şimdi güncelle"
+  },
+  "stats": {
+    "avgRisk": "Ortalama risk skoru",
+    "avgRiskSub": "0–10 bileşik gösterge",
+    "highCountries": "Yüksek / ekstrem ülke",
+    "highCountriesSub": "{{count}} ülke içinde",
+    "lastSync": "Son çatışma senkronu",
+    "lastSyncSubEmpty": "—"
+  },
+  "table": {
+    "title": "Ülke listesi",
+    "subtitle": "RSS ile güçlendirilmiş çatışma bileşeni dahil",
+    "country": "Ülke",
+    "score": "Skor",
+    "level": "Seviye",
+    "conflict": "Çatışma",
+    "political": "Politik",
+    "economy": "Ekonomi",
+    "logistics": "Lojistik",
+    "detail": "Detay"
+  },
+  "scatter": {
+    "title": "Risk haritası (koordinat)",
+    "bubbleHint": "Kabarcık boyutu ∝ risk",
+    "tooltipScore": "Skor"
+  },
+  "topRisks": {
+    "title": "En yüksek risk (özet)"
+  },
+  "breaking": {
+    "title": "Son dakika & dünya gündemi",
+    "subtitle": "BBC World + Google News TR — ~15 dk yenilenir",
+    "loadError": "Haber yüklenemedi",
+    "loading": "Haberler yükleniyor…",
+    "openArticle": "Haberi aç →"
+  },
+  "conflict": {
+    "title": "Çatışma & kriz akışı",
+    "subtitle": "ReliefWeb RSS — ülke eşlemesi",
+    "empty": "Henüz kayıt yok. Senkronizasyonu çalıştırın.",
+    "openSource": "Kaynağı aç"
+  },
+  "protected": {
+    "verifying": "Oturum doğrulanıyor…"
+  },
+  "landing": {
+    "heroTitle": "Lojistik için ülke riski & koridor analizi",
+    "heroSubtitle": "Taşıma güzergâhınızdaki ülkeleri tek panelde skorlayın; çatışma sinyalleri ve Türkçe operasyon önerileriyle operasyon ve finans ekiplerini hizalayın. SaaS panel ana gelir kanalı; REST API Pro+ ile TMS / WMS entegrasyonu.",
+    "ctaTrial": "Ücretsiz dene",
+    "ctaLogin": "Giriş",
+    "loadError": "Yükleme hatası",
+    "monthlyCorridor": "Aylık koridor analizi:",
+    "apiYes": "Evet (Pro+)",
+    "apiNo": "Hayır (panel only)",
+    "footer": "Gelir modeli özeti: Starter (düşük bilet / deneme) → Pro (koltuk + API) → Enterprise (yıllık lisans, SLA). Ayrıntı için repodaki docs/IS_MODELI.md."
+  },
+  "login": {
+    "title": "Giriş",
+    "noAccount": "Hesabın yok mu?",
+    "registerLink": "Kayıt ol",
+    "email": "E-posta",
+    "password": "Şifre",
+    "error": "Giriş başarısız",
+    "submit": "Giriş yap",
+    "submitBusy": "…",
+    "home": "← Ana sayfa"
+  },
+  "register": {
+    "title": "Şirket kaydı",
+    "haveAccount": "Zaten hesabın var mı?",
+    "loginLink": "Giriş",
+    "company": "Şirket / filo adı",
+    "email": "E-posta",
+    "password": "Şifre (min 8)",
+    "error": "Kayıt başarısız",
+    "submit": "Hesap oluştur",
+    "submitBusy": "…",
+    "home": "← Ana sayfa"
+  },
+  "dashboard": {
+    "loadError": "Yükleme hatası",
+    "syncError": "Senkron hatası",
+    "syncOkWithMsg": "Senkron tamam: {{status}} — {{message}}",
+    "syncOk": "Senkron tamam: {{status}}",
+    "footer": "Veriler bilgilendirme amaçlıdır; ticari kararlar için uzman görüşü gereklidir. ReliefWeb RSS ile otomatik akış; her gün 12:00 Türkiye saatinde senkron önerilir (sunucu zamanı Europe/Istanbul)."
+  },
+  "corridor": {
+    "title": "Koridor (rota) analizi",
+    "subtitle": "Transit ülkeleri sırayla girin (ISO2, virgül veya boşluk ile). Darboğaz ülke ve birleşik öneriler üretilir. Her çalıştırma aylık kotanızdan düşer.",
+    "chainLabel": "Ülke zinciri",
+    "placeholder": "ör. TR, BG, RO, HU, DE",
+    "analyze": "Analiz et",
+    "analyzing": "Hesaplanıyor…",
+    "scoreLabel": "Koridor skoru:",
+    "bottleneck": "Darboğaz:",
+    "tableCountry": "Ülke",
+    "tableScore": "Skor",
+    "tableLevel": "Seviye",
+    "tableLogistics": "Lojistik",
+    "playbookTitle": "Playbook (darboğaz ülke bazlı)"
+  },
+  "country": {
+    "back": "Panele dön",
+    "loadError": "Hata",
+    "loading": "Yükleniyor…",
+    "radarConflict": "Çatışma",
+    "radarPolitical": "Politik risk",
+    "radarEconomy": "Ekonomi",
+    "radarLogistics": "Lojistik",
+    "componentsTitle": "Risk bileşenleri",
+    "recommendationsTitle": "Özet öneri listesi",
+    "playbookTitle": "Gelişmiş öneri playbook’u",
+    "playbookDisclaimer": "Güvenlik ve lojistik ayrılmış kategoriler; müşteri sunumlarında doğrudan kullanılabilir (hukuki tavsiye değildir).",
+    "headlinesTitle": "Son çatışma / kriz başlıkları",
+    "headlinesEmpty": "Bu ülke için eşleşen başlık yok."
+  },
+  "settings": {
+    "title": "API & kota",
+    "subtitle": "Pro ve Enterprise planlarda REST API ile TMS entegrasyonu. Uçlar:",
+    "plan": "Plan:",
+    "corridorUsage": "Koridor analizi bu ay:",
+    "apiKeys": "API anahtarları",
+    "starterNoApi": "Starter planda API yok. Müşteriye Pro satışı veya sunucuda demo yükseltme (DEMO_UPGRADE_SECRET) ile test edin.",
+    "labelPlaceholder": "TMS prod",
+    "newKey": "Yeni anahtar",
+    "keyOnce": "Bir kez gösterilir:",
+    "revoke": "İptal"
+  },
+  "playbook": {
+    "guvenlik": "Güvenlik",
+    "lojistik_operasyon": "Lojistik",
+    "gumruk_uyum": "Gümrük & uyum",
+    "finans_sigorta": "Finans & sigorta",
+    "kurumsal_sureklilik": "Kurumsal süreklilik"
+  },
+  "countryPagePlaybook": {
+    "guvenlik": "Güvenlik & fiziksel risk",
+    "lojistik_operasyon": "Lojistik operasyon",
+    "gumruk_uyum": "Gümrük & uyum",
+    "finans_sigorta": "Finans & sigorta",
+    "kurumsal_sureklilik": "Kurumsal süreklilik"
+  },
+  "errors": {
+    "generic": "Bir hata oluştu"
+  }
+}

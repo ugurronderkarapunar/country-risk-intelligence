@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "brand": "风险情报",
+    "panel": "控制台",
+    "corridor": "走廊",
+    "settingsQuota": "配额 / API",
+    "logout": "退出登录"
+  },
+  "lang": {
+    "label": "语言",
+    "tr": "土耳其语",
+    "en": "英语",
+    "ar": "阿拉伯语",
+    "zh": "中文",
+    "de": "德语",
+    "fr": "法语",
+    "es": "西班牙语",
+    "ja": "日语"
+  },
+  "header": {
+    "title": "国家风险情报",
+    "subtitle": "为物流与外贸团队提供国家风险、冲突信号与运营建议——统一终端面板。",
+    "syncConflict": "立即刷新冲突信息流"
+  },
+  "stats": {
+    "avgRisk": "平均风险分",
+    "avgRiskSub": "0–10 综合指标",
+    "highCountries": "高/极高风险国家",
+    "highCountriesSub": "在 {{count}} 个国家中",
+    "lastSync": "上次冲突同步",
+    "lastSyncSubEmpty": "—"
+  },
+  "table": {
+    "title": "国家列表",
+    "subtitle": "含 RSS 增强冲突组件",
+    "country": "国家",
+    "score": "分数",
+    "level": "等级",
+    "conflict": "冲突",
+    "political": "政治",
+    "economy": "经济",
+    "logistics": "物流",
+    "detail": "详情"
+  },
+  "scatter": {
+    "title": "风险地图（坐标）",
+    "bubbleHint": "气泡大小 ∝ 风险",
+    "tooltipScore": "分数"
+  },
+  "topRisks": {
+    "title": "最高风险（摘要）"
+  },
+  "breaking": {
+    "title": "突发与全球要闻",
+    "subtitle": "BBC World + Google News TR — 约每 15 分钟更新",
+    "loadError": "新闻加载失败",
+    "loading": "正在加载新闻…",
+    "openArticle": "打开文章 →"
+  },
+  "conflict": {
+    "title": "冲突与危机流",
+    "subtitle": "ReliefWeb RSS — 国家匹配",
+    "empty": "暂无记录。请运行同步。",
+    "openSource": "打开来源"
+  },
+  "protected": {
+    "verifying": "正在验证会话…"
+  },
+  "landing": {
+    "heroTitle": "面向物流的国家风险与走廊分析",
+    "heroSubtitle": "在单一面板中评估沿途国家风险；用冲突信号与运营建议对齐运营与财务团队。SaaS 面板是主要收入来源；REST API（Pro+）对接 TMS/WMS。",
+    "ctaTrial": "免费试用",
+    "ctaLogin": "登录",
+    "loadError": "加载失败",
+    "monthlyCorridor": "每月走廊分析次数：",
+    "apiYes": "是（Pro+）",
+    "apiNo": "否（仅面板）",
+    "footer": "收入模型：Starter → Pro → Enterprise。详见 docs/IS_MODELI.md。"
+  },
+  "login": {
+    "title": "登录",
+    "noAccount": "没有账号？",
+    "registerLink": "注册",
+    "email": "邮箱",
+    "password": "密码",
+    "error": "登录失败",
+    "submit": "登录",
+    "submitBusy": "…",
+    "home": "← 首页"
+  },
+  "register": {
+    "title": "企业注册",
+    "haveAccount": "已有账号？",
+    "loginLink": "登录",
+    "company": "公司/车队名称",
+    "email": "邮箱",
+    "password": "密码（至少 8 位）",
+    "error": "注册失败",
+    "submit": "创建账号",
+    "submitBusy": "…",
+    "home": "← 首页"
+  },
+  "dashboard": {
+    "loadError": "加载失败",
+    "syncError": "同步错误",
+    "syncOkWithMsg": "同步完成：{{status}} — {{message}}",
+    "syncOk": "同步完成：{{status}}",
+    "footer": "数据仅供参考；商业决策请咨询专家。ReliefWeb RSS 自动流；建议每日约土耳其时间 12:00 同步。"
+  },
+  "corridor": {
+    "title": "走廊（路线）分析",
+    "subtitle": "按顺序输入过境国家（ISO2，逗号或空格）。识别瓶颈国家并生成综合建议。每次运行消耗月度配额。",
+    "chainLabel": "国家链",
+    "placeholder": "例如 TR, BG, RO, HU, DE",
+    "analyze": "分析",
+    "analyzing": "计算中…",
+    "scoreLabel": "走廊分数：",
+    "bottleneck": "瓶颈：",
+    "tableCountry": "国家",
+    "tableScore": "分数",
+    "tableLevel": "等级",
+    "tableLogistics": "物流",
+    "playbookTitle": "行动手册（基于瓶颈国家）"
+  },
+  "country": {
+    "back": "返回控制台",
+    "loadError": "错误",
+    "loading": "加载中…",
+    "radarConflict": "冲突",
+    "radarPolitical": "政治风险",
+    "radarEconomy": "经济",
+    "radarLogistics": "物流",
+    "componentsTitle": "风险构成",
+    "recommendationsTitle": "建议摘要",
+    "playbookTitle": "高级建议手册",
+    "playbookDisclaimer": "安全与物流分类便于客户演示（非法律建议）。",
+    "headlinesTitle": "最新冲突/危机标题",
+    "headlinesEmpty": "该国家暂无匹配标题。"
+  },
+  "settings": {
+    "title": "API 与配额",
+    "subtitle": "Pro 与 Enterprise 含用于 TMS 对接的 REST API。接口：",
+    "plan": "方案：",
+    "corridorUsage": "本月走廊分析：",
+    "apiKeys": "API 密钥",
+    "starterNoApi": "Starter 不含 API。向客户销售 Pro 或使用服务器 DEMO_UPGRADE_SECRET 测试。",
+    "labelPlaceholder": "TMS prod",
+    "newKey": "新建密钥",
+    "keyOnce": "仅显示一次：",
+    "revoke": "撤销"
+  },
+  "playbook": {
+    "guvenlik": "安全",
+    "lojistik_operasyon": "物流",
+    "gumruk_uyum": "海关与合规",
+    "finans_sigorta": "金融与保险",
+    "kurumsal_sureklilik": "业务连续性"
+  },
+  "countryPagePlaybook": {
+    "guvenlik": "安全与实体风险",
+    "lojistik_operasyon": "物流运营",
+    "gumruk_uyum": "海关与合规",
+    "finans_sigorta": "金融与保险",
+    "kurumsal_sureklilik": "业务连续性"
+  },
+  "errors": {
+    "generic": "发生错误"
+  }
+}

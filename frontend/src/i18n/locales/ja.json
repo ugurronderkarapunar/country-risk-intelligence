@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "brand": "リスク・インテリジェンス",
+    "panel": "ダッシュボード",
+    "corridor": "コリドー",
+    "settingsQuota": "クォータ / API",
+    "logout": "ログアウト"
+  },
+  "lang": {
+    "label": "言語",
+    "tr": "トルコ語",
+    "en": "英語",
+    "ar": "アラビア語",
+    "zh": "中国語",
+    "de": "ドイツ語",
+    "fr": "フランス語",
+    "es": "スペイン語",
+    "ja": "日本語"
+  },
+  "header": {
+    "title": "カントリー・リスク・インテリジェンス",
+    "subtitle": "物流・貿易チーム向けに、国リスク・紛争シグナル・運用提言を一つのターミナル風パネルで。",
+    "syncConflict": "紛争フィードを今すぐ更新"
+  },
+  "stats": {
+    "avgRisk": "平均リスクスコア",
+    "avgRiskSub": "0–10 の複合指標",
+    "highCountries": "高 / 極めて高い国",
+    "highCountriesSub": "{{count}} カ国のうち",
+    "lastSync": "最終紛争同期",
+    "lastSyncSubEmpty": "—"
+  },
+  "table": {
+    "title": "国リスト",
+    "subtitle": "RSS 強化の紛争コンポーネント込み",
+    "country": "国",
+    "score": "スコア",
+    "level": "レベル",
+    "conflict": "紛争",
+    "political": "政治",
+    "economy": "経済",
+    "logistics": "物流",
+    "detail": "詳細"
+  },
+  "scatter": {
+    "title": "リスクマップ（座標）",
+    "bubbleHint": "バブルサイズ ∝ リスク",
+    "tooltipScore": "スコア"
+  },
+  "topRisks": {
+    "title": "最高リスク（概要）"
+  },
+  "breaking": {
+    "title": "速報と世界の注目",
+    "subtitle": "BBC World + Google News TR — 約15分ごと",
+    "loadError": "ニュースを読み込めませんでした",
+    "loading": "ニュースを読み込み中…",
+    "openArticle": "記事を開く →"
+  },
+  "conflict": {
+    "title": "紛争・危機フィード",
+    "subtitle": "ReliefWeb RSS — 国マッチング",
+    "empty": "まだデータがありません。同期を実行してください。",
+    "openSource": "ソースを開く"
+  },
+  "protected": {
+    "verifying": "セッションを確認中…"
+  },
+  "landing": {
+    "heroTitle": "物流向け 国リスク & コリドー分析",
+    "heroSubtitle": "ルート沿線の国を一つのパネルでスコア化し、紛争シグナルと運用提言でオペレーションと財務を整合。SaaS が主収益、REST API（Pro+）で TMS/WMS 連携。",
+    "ctaTrial": "無料で試す",
+    "ctaLogin": "ログイン",
+    "loadError": "読み込みに失敗しました",
+    "monthlyCorridor": "月次コリドー分析:",
+    "apiYes": "はい（Pro+）",
+    "apiNo": "いいえ（パネルのみ）",
+    "footer": "収益モデル: Starter → Pro → Enterprise。docs/IS_MODELI.md を参照。"
+  },
+  "login": {
+    "title": "ログイン",
+    "noAccount": "アカウントがない？",
+    "registerLink": "登録",
+    "email": "メール",
+    "password": "パスワード",
+    "error": "ログインに失敗しました",
+    "submit": "ログイン",
+    "submitBusy": "…",
+    "home": "← ホーム"
+  },
+  "register": {
+    "title": "会社登録",
+    "haveAccount": "すでにアカウント？",
+    "loginLink": "ログイン",
+    "company": "会社 / フリート名",
+    "email": "メール",
+    "password": "パスワード（8文字以上）",
+    "error": "登録に失敗しました",
+    "submit": "アカウント作成",
+    "submitBusy": "…",
+    "home": "← ホーム"
+  },
+  "dashboard": {
+    "loadError": "読み込みに失敗しました",
+    "syncError": "同期エラー",
+    "syncOkWithMsg": "同期完了: {{status}} — {{message}}",
+    "syncOk": "同期完了: {{status}}",
+    "footer": "データは情報提供のみ。商用判断は専門家へ。ReliefWeb RSS 自動取得。TR 12:00 前後の日次同期を推奨。"
+  },
+  "corridor": {
+    "title": "コリドー（ルート）分析",
+    "subtitle": "通過国を順に入力（ISO2、カンマまたはスペース）。ボトルネック国と統合提言。実行ごとに月次クォータを消費。",
+    "chainLabel": "国チェーン",
+    "placeholder": "例 TR, BG, RO, HU, DE",
+    "analyze": "分析",
+    "analyzing": "計算中…",
+    "scoreLabel": "コリダースコア:",
+    "bottleneck": "ボトルネック:",
+    "tableCountry": "国",
+    "tableScore": "スコア",
+    "tableLevel": "レベル",
+    "tableLogistics": "物流",
+    "playbookTitle": "プレイブック（ボトルネック国）"
+  },
+  "country": {
+    "back": "ダッシュボードへ",
+    "loadError": "エラー",
+    "loading": "読み込み中…",
+    "radarConflict": "紛争",
+    "radarPolitical": "政治リスク",
+    "radarEconomy": "経済",
+    "radarLogistics": "物流",
+    "componentsTitle": "リスク構成要素",
+    "recommendationsTitle": "要約提言",
+    "playbookTitle": "高度な提言プレイブック",
+    "playbookDisclaimer": "セキュリティと物流を分離（法的助言ではありません）。",
+    "headlinesTitle": "最新の紛争/危機見出し",
+    "headlinesEmpty": "該当する見出しはありません。"
+  },
+  "settings": {
+    "title": "API とクォータ",
+    "subtitle": "Pro / Enterprise は TMS 向け REST API を含みます。エンドポイント:",
+    "plan": "プラン:",
+    "corridorUsage": "今月のコリダー分析:",
+    "apiKeys": "API キー",
+    "starterNoApi": "Starter に API なし。Pro 販売または DEMO_UPGRADE_SECRET で検証。",
+    "labelPlaceholder": "TMS prod",
+    "newKey": "新しいキー",
+    "keyOnce": "一度だけ表示:",
+    "revoke": "失効"
+  },
+  "playbook": {
+    "guvenlik": "セキュリティ",
+    "lojistik_operasyon": "物流",
+    "gumruk_uyum": "税関・コンプライアンス",
+    "finans_sigorta": "金融・保険",
+    "kurumsal_sureklilik": "事業継続"
+  },
+  "countryPagePlaybook": {
+    "guvenlik": "セキュリティと物理リスク",
+    "lojistik_operasyon": "物流オペレーション",
+    "gumruk_uyum": "税関・コンプライアンス",
+    "finans_sigorta": "金融・保険",
+    "kurumsal_sureklilik": "事業継続"
+  },
+  "errors": {
+    "generic": "エラーが発生しました"
+  }
+}

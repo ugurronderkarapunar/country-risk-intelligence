@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AppShell } from "./components/AppShell";
+import { I18nDirection } from "./components/I18nDirection";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { CorridorPage } from "./pages/CorridorPage";
@@ -64,6 +65,7 @@ function AppRoutes() {
 export default function App() {
   return (
     <AuthProvider>
+      <I18nDirection />
       <AppRoutes />
     </AuthProvider>
   );

@@ -1,6 +1,8 @@
 import { AlertTriangle, BarChart3, Clock } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import type { CountryBrief } from "../lib/api";
 import type { SyncStatus } from "../lib/api";
+import { localeTagFor } from "../i18n/locale";
 
 type Props = {
   countries: CountryBrief[];
@@ -8,25 +10,27 @@ type Props = {
 };
 
 export function StatCards({ countries, sync }: Props) {
+  const { t, i18n } = useTranslation();
+  const loc = localeTagFor(i18n.language);
   const avg = countries.length ? countries.reduce((a, c) => a + c.risk_score, 0) / countries.length : 0;
   const high = countries.filter((c) => c.risk_level === "HIGH" || c.risk_level === "EXTREME").length;
-  const last = sync?.last_run_finished ? new Date(sync.last_run_finished).toLocaleString("tr-TR") : "—";
+  const last = sync?.last_run_finished ? new Date(sync.last_run_finished).toLocaleString(loc) : t("stats.lastSyncSubEmpty");
 
   const items = [
     {
-      label: "Ortalama risk skoru",
+      label: t("stats.avgRisk"),
       value: avg.toFixed(2),
-      sub: "0–10 bileşik gösterge",
+      sub: t("stats.avgRiskSub"),
       icon: BarChart3,
     },
     {
-      label: "Yüksek / ekstrem ülke",
+      label: t("stats.highCountries"),
       value: String(high),
-      sub: `${countries.length} ülke içinde`,
+      sub: t("stats.highCountriesSub", { count: countries.length }),
       icon: AlertTriangle,
     },
     {
-      label: "Son çatışma senkronu",
+      label: t("stats.lastSync"),
       value: last,
       sub: sync?.next_scheduled_tr ?? "",
       icon: Clock,

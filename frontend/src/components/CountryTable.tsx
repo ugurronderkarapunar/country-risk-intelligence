@@ -1,26 +1,29 @@
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import type { CountryBrief } from "../lib/api";
 import { riskBadgeClass } from "../lib/riskUi";
 
 export function CountryTable({ rows }: { rows: CountryBrief[] }) {
+  const { t } = useTranslation();
+
   return (
     <div className="overflow-hidden rounded-2xl border border-surface-600/60 bg-surface-800/30">
       <div className="border-b border-surface-600/60 px-4 py-3">
-        <h2 className="text-sm font-semibold text-slate-200">Ülke listesi</h2>
-        <p className="text-xs text-slate-500">RSS ile güçlendirilmiş çatışma bileşeni dahil</p>
+        <h2 className="text-sm font-semibold text-slate-200">{t("table.title")}</h2>
+        <p className="text-xs text-slate-500">{t("table.subtitle")}</p>
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full text-left text-sm">
           <thead className="bg-surface-900/50 text-xs uppercase tracking-wide text-slate-500">
             <tr>
-              <th className="px-4 py-3 font-medium">Ülke</th>
-              <th className="px-4 py-3 font-medium">Skor</th>
-              <th className="px-4 py-3 font-medium">Seviye</th>
-              <th className="px-4 py-3 font-medium">Çatışma</th>
-              <th className="px-4 py-3 font-medium">Politik</th>
-              <th className="px-4 py-3 font-medium">Ekonomi</th>
-              <th className="px-4 py-3 font-medium">Lojistik</th>
+              <th className="px-4 py-3 font-medium">{t("table.country")}</th>
+              <th className="px-4 py-3 font-medium">{t("table.score")}</th>
+              <th className="px-4 py-3 font-medium">{t("table.level")}</th>
+              <th className="px-4 py-3 font-medium">{t("table.conflict")}</th>
+              <th className="px-4 py-3 font-medium">{t("table.political")}</th>
+              <th className="px-4 py-3 font-medium">{t("table.economy")}</th>
+              <th className="px-4 py-3 font-medium">{t("table.logistics")}</th>
               <th className="px-4 py-3" />
             </tr>
           </thead>
@@ -46,7 +49,7 @@ export function CountryTable({ rows }: { rows: CountryBrief[] }) {
                     to={`/country/${c.iso2}`}
                     className="inline-flex items-center gap-1 text-accent-cyan hover:text-cyan-200"
                   >
-                    Detay
+                    {t("table.detail")}
                     <ChevronRight className="h-4 w-4" />
                   </Link>
                 </td>

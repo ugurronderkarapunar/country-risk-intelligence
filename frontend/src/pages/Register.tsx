@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { api, setToken } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
 
 export function Register() {
+  const { t } = useTranslation();
   const nav = useNavigate();
   const { refresh } = useAuth();
   const [company_name, setCompanyName] = useState("");
@@ -22,7 +25,7 @@ export function Register() {
       await refresh();
       nav("/dashboard", { replace: true });
     } catch (e2) {
-      setErr(e2 instanceof Error ? e2.message : "Kayıt başarısız");
+      setErr(e2 instanceof Error ? e2.message : t("register.error"));
     } finally {
       setBusy(false);
     }
@@ -30,16 +33,19 @@ export function Register() {
 
   return (
     <div className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-4">
-      <h1 className="text-2xl font-semibold text-white">Şirket kaydı</h1>
+      <div className="mb-6 flex justify-end">
+        <LanguageSwitcher />
+      </div>
+      <h1 className="text-2xl font-semibold text-white">{t("register.title")}</h1>
       <p className="mt-1 text-sm text-slate-500">
-        Zaten hesabın var mı?{" "}
+        {t("register.haveAccount")}{" "}
         <Link to="/login" className="text-accent-cyan hover:underline">
-          Giriş
+          {t("register.loginLink")}
         </Link>
       </p>
       <form onSubmit={submit} className="mt-6 space-y-4">
         <div>
-          <label className="block text-xs font-medium text-slate-400">Şirket / filo adı</label>
+          <label className="block text-xs font-medium text-slate-400">{t("register.company")}</label>
           <input
             required
             minLength={2}
@@ -49,7 +55,7 @@ export function Register() {
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-slate-400">E-posta</label>
+          <label className="block text-xs font-medium text-slate-400">{t("register.email")}</label>
           <input
             type="email"
             required
@@ -59,7 +65,7 @@ export function Register() {
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-slate-400">Şifre (min 8)</label>
+          <label className="block text-xs font-medium text-slate-400">{t("register.password")}</label>
           <input
             type="password"
             required
@@ -75,11 +81,11 @@ export function Register() {
           disabled={busy}
           className="w-full rounded-xl bg-cyan-500 py-2.5 text-sm font-semibold text-surface-900 disabled:opacity-50"
         >
-          {busy ? "…" : "Hesap oluştur"}
+          {busy ? t("register.submitBusy") : t("register.submit")}
         </button>
       </form>
       <Link to="/" className="mt-6 text-center text-sm text-slate-500 hover:text-slate-300">
-        ← Ana sayfa
+        {t("register.home")}
       </Link>
     </div>
   );
